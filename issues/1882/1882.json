@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "fixed in version 3.0",
+    "ClosedDate": "2015-09-30T13:13:44.117-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Fields SteamID and GameId are defined as \"long long\" (64-bit) but are only read as 32-bit integers, which also causes wrong data to be read into other fields.",
+    "LastUpdatedDate": "2015-09-30T13:13:44.117-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "querymaster",
+    "ReportedDate": "2015-02-28T19:02:59.043-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Fixed"
+    },
+    "Summary": "ServerInfo.Extra filled with wrong data",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1882
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "hi hbeham,\nThank you for reporting it.\nIt will be fixed soon.\r\n\r\n ",
+      "PostedDate": "2015-03-10T06:10:41.32-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2015-09-30T13:13:44.117-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

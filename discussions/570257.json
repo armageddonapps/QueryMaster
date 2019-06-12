@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1314979",
+    "ThreadId": "570257",
+    "Html": "Hello ! \r<br />\nThe GetPlayers function doesn't work for me at one of servers.\r<br />\nOn other servers works at it isn't present. The server so that not to provide statistics on players can be configured (if it is possible)?! But there is a paradox at them on the page of the site monitoring of this server is integrated. \r<br />\n<br />\nCODE:<br />\n<pre><code>QueryMaster.Server server = QueryMaster.ServerQuery.GetServerInstance(QueryMaster.EngineType.Source, &quot;46.188.16.205&quot;, 2303);\nReadOnlyCollection&lt;QueryMaster.Player&gt; players = server.GetPlayers();</code></pre>\n\n",
+    "PostedDate": "2014-10-20T07:36:08.133-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1325669",
+    "ThreadId": "570257",
+    "Html": "What kind of error are u getting?\r<br />\nRead the Exception handling section in <a href=\"https://querymaster.codeplex.com/wikipage?title=Updates%28Version%201.1%29\" rel=\"nofollow\">https://querymaster.codeplex.com/wikipage?title=Updates%28Version%201.1%29</a>\r<br />\npaste here your received data(in hex format).<br />\n",
+    "PostedDate": "2014-11-24T11:17:29.44-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

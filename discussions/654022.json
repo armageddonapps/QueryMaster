@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1471393",
+    "ThreadId": "654022",
+    "Html": "Im using GetPlayers() for arma3 and it is working fine up until it starts to return over around 50-60 players. Is someone able to look into this for me please? I have tried it on multiple servers and it definitely seems to only return null when there is a request for a large amount of players.\r<br />\n<br />\nAny help would be greatly appreciated!\r<br />\n<br />\nCheers,<br />\n",
+    "PostedDate": "2016-04-26T10:35:33.727-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1477242",
+    "ThreadId": "654022",
+    "Html": "hi catbert90,\r<br />\nIt seems to be a server side problem.\r<br />\nwhen player count goes above around 75, server does not respond to Player query message.\r<br />\nI couldn't get any information on this.<br />\n",
+    "PostedDate": "2016-06-25T04:16:23.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

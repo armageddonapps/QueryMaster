@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1308966",
+    "ThreadId": "568598",
+    "Html": "Hi, \r<br />\nthe main query to Steam Master Server return addresses and ports of all Game Servers. This is ok but I've noticed that the port retrieved from Master Server don't correspond to the real port of the Game Server. This is not an issue of this library, I think.\r<br />\n<br />\nThen I've noticed that the Extra Flag, that could retrieve the real Game Server's port, is readed, in the library, but not memorized in the server.extra string (you can find it in Server.cs at line 125); maybe an issue?\r<br />\n<br />\nBTW, great job on this library!!\r<br />\nGoliath86<br />\n",
+    "PostedDate": "2014-09-29T09:51:47.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1309001",
+    "ThreadId": "568598",
+    "Html": "I have made some changes to the original code:<br />\n<pre><code>// Search for the Extra Flag information\ntry\n{\n    server.Extra = &quot;&quot;;                  // Initialize the Extra Flag\n    byte edf = parser.ReadByte();\n    if ((edf &amp; 0x80) &gt; 0)\n        server.Extra = server.Extra + &quot;ServerPort=&quot; + parser.ReadShort() +&quot;;&quot;;\n    if ((edf &amp; 0x10) &gt; 0)\n        server.Extra = server.Extra + &quot;SteamID=&quot; + parser.ReadInt() + &quot;;&quot;;\n    if ((edf &amp; 0x40) &gt; 0)\n        server.Extra = server.Extra + &quot;Port=&quot; + parser.ReadShort() + &quot;;Name=&quot; + parser.ReadString() + &quot;;&quot;;\n    if ((edf &amp; 0x20) &gt; 0)\n        server.Extra = server.Extra + &quot;Keywords=&quot; + parser.ReadString() + &quot;;&quot;;\n    if ((edf &amp; 0x10) &gt; 0)\n        server.Extra = server.Extra + &quot;GameID=&quot; + parser.ReadInt();\n}\ncatch (ParseException)\n{\n    // Do Nothing\n    //server.Extra = &quot;&quot;;\n}</code></pre>\n\nSo, if the Extra Flag is found, it will return all the information contained in it. It even separate information with semi-column so it's more simple to split the entire server.Extra() string to found them.<br />\n<br />\nGoliath<br />\n",
+    "PostedDate": "2014-09-29T11:32:29.617-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1310159",
+    "ThreadId": "568598",
+    "Html": "hi,\r<br />\n   thank you for reporting it.Source code has been updated.\r<br />\nThere is no need to add &quot;;&quot;\r<br />\n<br />\nTo parse information in Extra flag you could do something like this in your application<br />\n<pre><code>//its just pseudocode\nif(!String.IsNullOrEmpty(server.Extra))\n{\nstring[] temp= server.Extra.Split('=');\n switch(temp[0])\n {\n  case &quot;ServerPort&quot; : //temp[1] is  server port number\n  case &quot;SteamID&quot; : //temp[1] is server  steamid\n  case &quot;Port&quot; : //extra flag contains spectator port no. and name.(Use Regex on server.Extra because 'name' may contain '=' )(Reg.Exp :  ^Port=([0-9]+)Name=(.+)$)\n  case &quot;Keywords&quot; : //extra flag contains keywords.(Use Regex on server.Extra because 'Keywords' may contain '=')\n  case &quot;GameID&quot; ://temp[1] is gameid\n }\n}\n</code></pre>\n\nBetson<br />\n",
+    "PostedDate": "2014-10-03T01:46:17.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1310282",
+    "ThreadId": "568598",
+    "Html": "Hi,\r<br />\nThank you betson.\r<br />\n<br />\nI've inserted the semi-column because the server.Extra string often is in form:<br />\n<pre><code>ServerPort=2302SteamID=123456Port=34567GameID=12354678989 etc.</code></pre>\n\nSo, with your method, inside temp[0] we found &quot;SteamID&quot; but inside temp[1] we found &quot;2302SteamID&quot;, in temp[2] we found &quot;123456Port&quot; and so on..so, for me, is more simple to insert the semi-column.\r<br />\n<br />\nBtw, thanks for your work!\r<br />\n<br />\nGoliath<br />\n",
+    "PostedDate": "2014-10-03T09:21:05.653-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1312825",
+    "ThreadId": "568598",
+    "Html": "I've noticed that so many servers have more than one Extra flag. With your method, Betson, we can only view one flag. With my method, we can see all the Extra flags.<br />\n",
+    "PostedDate": "2014-10-13T09:59:44.81-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1312938",
+    "ThreadId": "568598",
+    "Html": "Hi \r<br />\nIts been fixed.use the updated version.<br />\n",
+    "PostedDate": "2014-10-13T16:03:26.703-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1313140",
+    "ThreadId": "568598",
+    "Html": "Hi,\r<br />\nGreat work Betson! As usual!\r<br />\n<br />\nGoliath<br />\n",
+    "PostedDate": "2014-10-14T06:24:32.783-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1314334",
+    "ThreadId": "568598",
+    "Html": "<strong>Goliath86 wrote:</strong><br />\n<blockquote>\nHi,<br />\nGreat work Betson! As usual!<br />\n<br />\nGoliath<br />\n</blockquote>\nThank you for the compliment :)<br />\n",
+    "PostedDate": "2014-10-17T05:50:29.387-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

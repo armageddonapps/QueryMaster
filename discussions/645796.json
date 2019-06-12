@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1447030",
+    "ThreadId": "645796",
+    "Html": "Hey! \r<br />\n<br />\nSorry if this question is dumb, but how SendCommand(string) returns a &quot;new line&quot;? \r<br />\n<br />\nI've tried to append the returned string from SendCommand in a TextBox, replacing \\n to \\r\\n, but without success. \r<br />\n<br />\nThanks!<br />\n",
+    "PostedDate": "2015-10-04T18:02:57.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1447076",
+    "ThreadId": "645796",
+    "Html": "Did you set TextBox.MultiLine=true  ?<br />\n",
+    "PostedDate": "2015-10-05T04:52:22.103-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1447112",
+    "ThreadId": "645796",
+    "Html": "Yes! I was using a wrong regex. In fact, replacing &quot;\\n&quot; to &quot;\\r\\n&quot; solves the problem.<br />\n",
+    "PostedDate": "2015-10-05T09:31:10.273-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

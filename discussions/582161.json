@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1356642",
+    "ThreadId": "582161",
+    "Html": "I just started using this library and noticed that MasterServer.GetAddresses() doesn't have any timeout handling built in.\r<br />\nDue to the async/callback nature of this method the caller won't block, but it will never receive a callback and unanswered UDP requests will accumulate in the background.<br />\n",
+    "PostedDate": "2015-02-27T18:33:17.047-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1356766",
+    "ThreadId": "582161",
+    "Html": "hi hbeham,<br />\n<br />\nMasterServer.GetAddresses() uses BeginReceive and EndReceive to receive IPs.<br />\nIt doesn't come with a timeout because BeginReceive  waits till  it could read any data in internal buffer.i.e. it waits indefinitely<br />\nAs soon as the internal buffer gets filled(partial or full) with data,it reads that data and invokes the callback.<br />\nand within the callback ,I call the BeginReceive again and thus forms a loop and no data is left unread(or unanswered).<br />\nIt exits out only when the seedpoint ip   is received.<br />\n<br />\nIf you want to stop it from receiving any more ips then you can call Dispose() method<br />\n",
+    "PostedDate": "2015-02-28T02:48:34.47-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1356841",
+    "ThreadId": "582161",
+    "Html": "Hi betson,  thanks for your reply and sharing your code with us!\r<br />\n<br />\nMy applolgies, I was under the wrong impression that with BeginReceive() background threads pile up when no response is received, but that is not true as I found out with the debugger.\r<br />\n<br />\nWhat I noticed is that GetAdresses() sets the internal IsListening flag and never resets it. Thus a single MasterServer instance can only be used once and silently does nothing when used again.\r<br />\nSo the question is when to properly dispose the instance. I can't do it right after calling GetAddresses, which would interrupt the pending request, nor can I do it in the receive callback, because it might not be called for the final batch if a UDP packet got dropped. \r<br />\nIf it's not disposed at all, open UDP ports pile up, which can be seen with &quot;netstat -an&quot;.\r<br />\n<br />\nThe current implementation of GetAddresses() works fine as a low-level API, but leaves some important tasks up to the caller:<br />\n<ul>\n<li>resending unanswered UDP packets</li>\n<li>failure handling, like partial results or no results at all</li>\n<li>\nresource cleanup<br />\n</li>\n</ul>\nI'm working on a wrapper now that takes care of these issues and will share it when completed.<br />\n",
+    "PostedDate": "2015-02-28T05:13:23.047-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1357083",
+    "ThreadId": "582161",
+    "Html": "I experimented with all kinds of async patterns today and came to the conclusion that async is not a good fit for this request/response scenario.<br />\nThe amount of overhead needed to properly synchronize the various threads and protect against race conditions was just enormous.<br />\nThe simplest solution was to do make the communication synchronous and wrap the call into a Task which runs in the thread pool.<br />\n<br />\n<a href=\"http://pastebin.com/jDF43zB3\" rel=\"nofollow\">http://pastebin.com/jDF43zB3</a><br />\n<br />\nThis implementation tries Send/Receive up to 3 times per batch to recover from dropped packets, which now allows me to retrieve all 6000 Team Fortress 2 servers.<br />\nIn case it really fails 3x on the same batch, the callback is notified by passing it a NULL value.<br />\nThe caller can use the returned Task object to Wait() for completion or rethrow a exception if necessary.<br />\n",
+    "PostedDate": "2015-02-28T17:18:06.863-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

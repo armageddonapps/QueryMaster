@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1476757",
+    "ThreadId": "655710",
+    "Html": "I use QueryMaster to monitor 3 7 Days To Die Servers. One of them allows me to read the data just fine, but two others give me errors when attempting to pull GetRules(). I can get other information, just not rules.\r<br />\n<br />\nThis is the exception that is thrown: \r<br />\n{&quot;A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself&quot;}\r<br />\n<br />\nAny ideas?<br />\n",
+    "PostedDate": "2016-06-19T15:44:11.433-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1477243",
+    "ThreadId": "655710",
+    "Html": "hi jkilpatrick,<br />\nDo you get this message consistently or randomly?<br />\nCan you provide the server address<br />\n",
+    "PostedDate": "2016-06-25T04:17:57.22-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1477374",
+    "ThreadId": "655710",
+    "Html": "Thank you for the reply. \r<br />\n<br />\nYes, I was getting this message consistently. However, the server got updated, and the problem went away. I'm still not sure what happened, or what could have caused the issue.<br />\n",
+    "PostedDate": "2016-06-27T12:35:05.523-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

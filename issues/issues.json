@@ -1,0 +1,14 @@
+[
+  {
+    "Id": 1837,
+    "Title": ".GetPlayers() method"
+  },
+  {
+    "Id": 1839,
+    "Title": "Rcon.sendCommand() issue"
+  },
+  {
+    "Id": 1882,
+    "Title": "ServerInfo.Extra filled with wrong data"
+  }
+]

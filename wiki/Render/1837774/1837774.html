@@ -1,0 +1,27 @@
+<div class="wikidoc"><h2>Adding new Steam Interface</h2>
+Steps :-
+<ul><li>Create class with interface name.</li>
+<li>derive it from &quot;InterfaceBase&quot; class.</li>
+<li>Initialize &quot;Interface&quot; property with interface name.</li>
+<li>Create a method with same name as api method.</li>
+<li>Create classes for the response json string.(you may use sites like <a href="http://json2csharp.com/">this</a> one to do it for u).</li>
+<li>use JSon.net library(already included) to rename all classes as per the naming convention which this library follows.Do same for properties too.</li>
+<li>Rename root object to ParsedResponse.</li>
+<li>Create an instance of SteamUrl using interface name,method name,version and parameters.</li>
+<li>if the method requires api key,then set AppendKey flag of SteamUrl to true.</li>
+<li>pass it to GetParsedResponse method and return its response.</li></ul>
+<br /><br />This is an implementaion of IPlayerService interface&#39;s GetCommunityBadgeProgress method.<br /><br /><pre>
+    public class IPlayerService : InterfaceBase 
+    {
+        internal IPlayerService()
+        {
+            Interface = &quot;IPlayerService&quot;;
+        }
+        public GetCommunityBadgeProgressResponse GetCommunityBadgeProgress(ulong steamId)
+        {
+            SteamUrl url = new SteamUrl { Interface = Interface, Method = &quot;GetCommunityBadgeProgress&quot;, Version = 1, AppendKey = true };
+            url.Parameters.Add(new Parameter { Name = &quot;steamid&quot;, Value = steamId.ToString(CultureInfo.InvariantCulture) });
+            return GetParsedResponse&lt;GetCommunityBadgeProgressResponse&gt;(url);
+        }
+   }
+</pre><br /><br /></div><div class="ClearBoth"></div>

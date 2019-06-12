@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4CA9C894-518F-42D7-BBE2-CFDFE7A03F8A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QueryMaster</RootNamespace>
+    <AssemblyName>QueryMaster</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\QueryMaster.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ionic.BZip2, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ExternalBin\Ionic.BZip2.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ExternalBin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConnectionInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContractSolver\OriginalNameContractResolver.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Exceptions.cs" />
+    <Compile Include="DataObject.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="GameServer\DataObjects\ExtraInfo.cs" />
+    <Compile Include="GameServer\DataObjects\LogFilter.cs" />
+    <Compile Include="GameServer\DataObjects\LogFilterCollection.cs" />
+    <Compile Include="GameServer\DataObjects\ModInfo.cs" />
+    <Compile Include="GameServer\DataObjects\Player.cs" />
+    <Compile Include="GameServer\DataObjects\PlayerFilter.cs" />
+    <Compile Include="GameServer\DataObjects\LogPlayerInfo.cs" />
+    <Compile Include="GameServer\DataObjects\RegexFilter.cs" />
+    <Compile Include="GameServer\DataObjects\Rule.cs" />
+    <Compile Include="GameServer\DataObjects\ServerInfo.cs" />
+    <Compile Include="GameServer\DataObjects\ShipInfo.cs" />
+    <Compile Include="GameServer\DataObjects\SourceTVInfo.cs" />
+    <Compile Include="GameServer\DataObjects\StringFilter.cs" />
+    <Compile Include="GameServer\Enums.cs" />
+    <Compile Include="GameServer\EventArgs\ChatEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\CommentReceivedEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\ConnectEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\CvarEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\ExceptionEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\InjureEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\KickEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\KillEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\LogEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\LogReceivedEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\LogStartEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\MapLoadEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\MapStartEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\NameChangeEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\PlayerActionEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\PlayerEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\PlayerOnPlayerEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\PlayerScoreReportEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\PrivateChatEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\RconEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\RoleSelectionEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\ServerNameEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\ServerSayEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\SuicideEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\TeamActionEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\TeamAllianceEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\TeamScoreReportEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\TeamSelectionEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\WeaponEventArgs.cs" />
+    <Compile Include="GameServer\EventArgs\WorldActionEventArgs.cs" />
+    <Compile Include="GameServer\GoldSource.cs" />
+    <Compile Include="GameServer\LogEvents.cs" />
+    <Compile Include="JsonConverters\GetGlobalStatsForGameResponseStatConverter.cs" />
+    <Compile Include="JsonConverters\StringIpEndPointConverter.cs" />
+    <Compile Include="JsonConverters\IntegerTimeSpanConverter.cs" />
+    <Compile Include="JsonConverters\IntegerUnixTimeStampConverter.cs" />
+    <Compile Include="MasterServer\DataObjects\BatchInfo.cs" />
+    <Compile Include="QueryMasterBase.cs" />
+    <Compile Include="QueryMasterCollection.cs" />
+    <Compile Include="MasterServer\Enums.cs" />
+    <Compile Include="MasterServer\DataObjects\IPFilter.cs" />
+    <Compile Include="GameServer\Logs.cs" />
+    <Compile Include="MasterServer\MasterQuery.cs" />
+    <Compile Include="MasterServer\Server.cs" />
+    <Compile Include="MasterServer\MasterUtil.cs" />
+    <Compile Include="Parser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GameServer\QueryMsg.cs" />
+    <Compile Include="GameServer\Rcon.cs" />
+    <Compile Include="GameServer\RconGoldSource.cs" />
+    <Compile Include="GameServer\RconSource.cs" />
+    <Compile Include="GameServer\RconSrcPacket.cs" />
+    <Compile Include="GameServer\RconUtil.cs" />
+    <Compile Include="GameServer\Server.cs" />
+    <Compile Include="GameServer\ServerQuery.cs" />
+    <Compile Include="GameServer\ServerSocket.cs" />
+    <Compile Include="GameServer\Source.cs" />
+    <Compile Include="Steam\DataObjects\IPlayerService\GetBadgesResponse.cs" />
+    <Compile Include="Steam\DataObjects\IPlayerService\GetCommunityBadgeProgressResponse.cs" />
+    <Compile Include="Steam\DataObjects\IPlayerService\GetOwnedGamesResponse.cs" />
+    <Compile Include="Steam\DataObjects\IPlayerService\GetRecentlyPlayedGamesResponse.cs" />
+    <Compile Include="Steam\DataObjects\IPlayerService\GetSteamLevelResponse.cs" />
+    <Compile Include="Steam\DataObjects\IPlayerService\IsPlayingSharedGameResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamApps\GetAppListResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamApps\GetServersAtAddressResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamDirectory\GetCMListResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamGroup\GetGroupDetailsResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamNews\GetNewsForAppResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamUserStats\GetGlobalAchievementPercentagesForAppResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamUserStats\GetGlobalStatsForGameResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamUserStats\GetNumberOfCurrentPlayersResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamUserStats\GetPlayerAchievementsResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamUserStats\GetSchemaForGameResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamUserStats\GetUserStatsForGameResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamUser\GetFriendListResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamUser\GetPlayerBansResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamUser\GetPlayerSummariesResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamUser\GetUserGroupListResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamUser\ResolveVanityURLResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamWebAPIUtil\GetServerInfoResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamWebAPIUtil\GetSupportedAPIListResponse.cs" />
+    <Compile Include="Steam\DataObjects\SteamResponse.cs" />
+    <Compile Include="Steam\DataObjects\ISteamApps\UpToDateCheckResponse.cs" />
+    <Compile Include="Steam\Enums.cs" />
+    <Compile Include="Steam\Interfaces\InterfaceBase.cs" />
+    <Compile Include="Steam\Interfaces\IPlayerService.cs" />
+    <Compile Include="Steam\Interfaces\ISteamApps.cs" />
+    <Compile Include="Steam\Interfaces\ISteamDirectory.cs" />
+    <Compile Include="Steam\Interfaces\ISteamGroup.cs" />
+    <Compile Include="Steam\Interfaces\ISteamNews.cs" />
+    <Compile Include="Steam\Interfaces\ISteamUser.cs" />
+    <Compile Include="Steam\Interfaces\ISteamUserStats.cs" />
+    <Compile Include="Steam\Interfaces\ISteamWebAPIUtil.cs" />
+    <Compile Include="Steam\Parameter.cs" />
+    <Compile Include="Steam\SteamQuery.cs" />
+    <Compile Include="GameServer\TcpQuery.cs" />
+    <Compile Include="GameServer\UdpQuery.cs" />
+    <Compile Include="Steam\SteamUrl.cs" />
+    <Compile Include="Util.cs" />
+    <Compile Include="Steam\SteamSocket.cs" />
+    <Compile Include="Utils\AccountTypeMapper.cs" />
+    <Compile Include="Utils\Enums.cs" />
+    <Compile Include="Utils\SteamId.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="QueryMaster.license">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ionic.BZip2.license">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Newtonsoft.Json.license">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="QueryMaster.licenseheader" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ExternalBin\Ionic.BZip2.dll" />
+    <Content Include="ExternalBin\Newtonsoft.Json.dll" />
+    <Content Include="ExternalBin\Newtonsoft.Json.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

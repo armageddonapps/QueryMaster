@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1348957",
+    "ThreadId": "579467",
+    "Html": "I'm trying to subscribe to chat events, however I'm having some issues.<br />\n<br />\nIs the following local port supposed to be defined anywhere else or is it just for the purpose of the program?<br />\n<br />\nLogs logs = server.GetLogs(&lt;local port&gt;);<br />\n<br />\nAlso, does it require any configuration server side other than ensuring logging is enabled?<br />\n",
+    "PostedDate": "2015-02-04T07:09:56.137-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1349037",
+    "ThreadId": "579467",
+    "Html": "Hi Meekel,\r<br />\n You need to do few things before subscribing to any event\r<br />\n<br />\n1.Enable logging on server side \r<br />\n<br />\n2.Add your ip-address  to server's log address list\r<br />\n  you can directly  add it to server using log_address command \r<br />\nor use Querymaster<br />\n<pre><code>Rcon rcon = server.GetControl(&quot;&lt;rcon password&gt;&quot;);\nif (rcon != null)\n     rcon.AddlogAddress(&quot;&lt;ip&gt;&quot;,&lt;port&gt;); </code></pre>\n\n3.Now you can subscribe to any event of your choice\r<br />\neg:-listen to chat<br />\n<pre><code>Logs logs = server.GetLogs(&lt;port&gt;);//the port number which you added to server's log list\nlogs.Say += new EventHandler&lt;ChatEventArgs&gt;(logs_Say);\n\nstatic void logs_Say(object sender, ChatEventArgs e)\n{\n            Console.WriteLine(&quot;Sender :&quot;);\n            Console.WriteLine(&quot;\\tName : &quot; + e.Player.Name);\n            Console.WriteLine(&quot;\\tUid : &quot; + e.Player.Uid);\n            Console.WriteLine(&quot;\\tWonid : &quot; + e.Player.WonId);\n            Console.WriteLine(&quot;\\tTeam : &quot; + e.Player.Team);\n            Console.WriteLine(&quot;Message : &quot; + e.Message);\n            Console.WriteLine(&quot;Timestamp : &quot; + e.Timestamp);\n}</code></pre>\n\n",
+    "PostedDate": "2015-02-04T10:54:39.817-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1352707",
+    "ThreadId": "579467",
+    "Html": "Could someone point me in the right direction on how to have my application just continuously echo back the server logs?  I am incorporating the DLLs into a C# Console Application and I guess I am not familiar with how you have an application not run code and exit, but rather, continue to listen to the logs and echo back?<br />\n",
+    "PostedDate": "2015-02-14T16:13:52.79-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1353468",
+    "ThreadId": "579467",
+    "Html": "hi worktech,\r<br />\nIts not the fault of  the dll.\r<br />\nAdd Console.Read() at the end  to keep the console window open.<br />\n",
+    "PostedDate": "2015-02-17T09:17:51.427-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1353548",
+    "ThreadId": "579467",
+    "Html": "When you use console.read() does the program not stop executing other code until you complete the read operation?\r<br />\n<br />\nThe following code does not echo any server logs, but it does correctly output the name of the map:<br />\n<pre><code>class Program\n{\n    static void Main(string[] args)\n    {\n        Server server = ServerQuery.GetServerInstance(EngineType.GoldSource, &quot;MyGameServerIP&quot;, 27025);\n        ServerInfo info = server.GetInfo();\n        Console.WriteLine(info.Map);\n        //Console.ReadKey();\n\n        Rcon rcon = server.GetControl(&quot;myPW&quot;);\n        if(rcon != null) rcon.AddlogAddress(&quot;myIP&quot;, 7131);\n\n        Logs logs = server.GetLogs(7131);\n\n        logs.Say += new EventHandler&lt;ChatEventArgs&gt;(logs_Say);\n        logs.Listen(LogListener);\n\n        Console.Read();\n\n        //server.Dispose();\n    }\n\n    static void LogListener(string logMsg)\n    {\n        Console.WriteLine(logMsg);\n    }\n\n    static void logs_Say(object sender, ChatEventArgs e)\n    {\n        Console.WriteLine(&quot;Sender :&quot;);\n        Console.WriteLine(&quot;\\tName : &quot; + e.Player.Name);\n        Console.WriteLine(&quot;\\tUid : &quot; + e.Player.Uid);\n        Console.WriteLine(&quot;\\tWonid : &quot; + e.Player.WonId);\n        Console.WriteLine(&quot;\\tTeam : &quot; + e.Player.Team);\n        Console.WriteLine(&quot;Message : &quot; + e.Message);\n        Console.WriteLine(&quot;Timestamp : &quot; + e.Timestamp);\n    }\n}</code></pre>\n\n",
+    "PostedDate": "2015-02-17T14:05:32.053-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1354123",
+    "ThreadId": "579467",
+    "Html": "It should work. \r<br />\nyou sure you entered right rcon password and server logging is turned on?\r<br />\nif you are behind a router, do port forwarding.\r<br />\nLogging occurs only during game events mentioned <a href=\"https://developer.valvesoftware.com/wiki/HL_Log_Standard\" rel=\"nofollow\">here</a> and also during some events  introduced by custom mods like Amxmodx<br />\n",
+    "PostedDate": "2015-02-19T12:26:29.373-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1470439",
+    "ThreadId": "653673",
+    "Html": "When I try to get PlayerInfo / Rules the function returns null, If i use the sample Application it doesn'T work either. Do i need to change server settings? thx for help and sorry for my bad english skill (used exactly the same code as in your sample Application)<br />\n",
+    "PostedDate": "2016-04-17T07:46:41.92-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1470597",
+    "ThreadId": "653673",
+    "Html": "Hi fzsmaurice,\r<br />\nfunction would return null when there is an exception and by default it wont throw the exception.\r<br />\nYou can  tell it to throw the exception by setting throwExceptions parameter of ServerQuery.GetServerInstance method to true.\r<br />\nThrown exception would give you details on why its not working.\r<br />\n<br />\nI could try to connect to the server if you can provide the server address.\r<br />\n<br />\nAlso give some more information on server like\r<br />\nAre you able to connect  to the server through  the game?\r<br />\nIs it a local server which u made or a public server?\r<br />\nAre you not able to query any server or just that server?\r<br />\nAre you or the server behind any router? if yes,have you done port forwarding?<br />\n",
+    "PostedDate": "2016-04-19T02:46:29.153-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1470664",
+    "ThreadId": "653673",
+    "Html": "Thx for the fast reply,\r<br />\nI can connect to the server and can send rcon commands, but GetRules and GetPlayers return a null.\r<br />\n<br />\nAre you able to connect to the server through the game? \r<br />\nYes I am\r<br />\nIs it a local server which u made or a public server? \r<br />\nRented at a plublic provider for Gameservers\r<br />\n<br />\nAre you not able to query any server or just that server? \r<br />\nI can connect, but there is also a null if i use Getplayer / GetRules\r<br />\n<br />\n<br />\nAre you or the server behind any router? if yes,have you done port forwarding?\r<br />\nthe game-ports are forwarded by the provider, are there other ports which are needed?<br />\n",
+    "PostedDate": "2016-04-19T13:09:12.93-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1477234",
+    "ThreadId": "653673",
+    "Html": "hi fzsmaurice,<br />\n  Please share  the server address.I will try to query it.<br />\n",
+    "PostedDate": "2016-06-25T01:20:10.577-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

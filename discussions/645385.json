@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1445598",
+    "ThreadId": "645385",
+    "Html": "Im trying to get list of goldsrc servers and i dont get anything. Does anyone have any suggestions what to do?\r<br />\n<br />\nThis is the code im trying to use:<br />\n<pre><code>using System;\nusing System.Collections.Generic;\nusing System.Net;\nusing QueryMaster;\n\nnamespace toast\n{\n    class Program\n    {\n        static void Main(string[] args)\n        {\n            MasterServer server = QueryMaster.MasterQuery.GetMasterServerInstance(QueryMaster.EngineType.GoldSource);\n            server.GetAddresses(Region.Europe, recv);\n\n            Console.ReadLine();\n        }\n\n        static void recv(IReadOnlyCollection&lt;IPEndPoint&gt; endpoints)\n        {\n            foreach (IPEndPoint i in endpoints)\n            {\n                if (i.Address.ToString() != &quot;0.0.0.0&quot;)\n                    Console.WriteLine(i);\n            }\n        }\n    }\n}</code></pre>\n\n",
+    "PostedDate": "2015-09-23T09:58:15.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1445858",
+    "ThreadId": "645385",
+    "Html": "Try it with Region.Rest_of_the_World\r<br />\nValve has deprecated the use of &quot;Region&quot; and returns everything when using &quot;Rest_of_the_World&quot;, with closely located servers first (based on Geo-IP).\r<br />\nI'm working with a different version of the library and have to specify an &quot;IpFilter&quot; object for GetAddresses. Using AppId 0 would return all games.<br />\n",
+    "PostedDate": "2015-09-25T01:38:24.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1446882",
+    "ThreadId": "645385",
+    "Html": "hi TopKek,<br />\n<br />\nIt seems Gold Source master server is not replying to any request.<br />\nLuckily Source Master Server also works for Gold Source Games.<br />\n<br />\nCheck out the latest release.Try it on the sample application(Source Code included).<br />\nChoose Source EndPoint instead of GoldSource.<br />\n",
+    "PostedDate": "2015-10-02T11:27:51.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

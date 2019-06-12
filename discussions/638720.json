@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1427453",
+    "ThreadId": "638720",
+    "Html": "As part of my SteamServerBrowser project I included a modified version of this library.\r<br />\n<a href=\"https://github.com/PredatH0r/SteamServerBrowser\" rel=\"nofollow\">https://github.com/PredatH0r/SteamServerBrowser</a>\r<br />\n<br />\nIt contains some bugfixes, automatically handles retries on timeouts (e.g. due to UDP packet loss), deals with the throttling of Valve's master servers and has improved threading to prevent the UI thread from blocking when the ThreadPool is full.<br />\n",
+    "PostedDate": "2015-05-25T08:08:10.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1427461",
+    "ThreadId": "638720",
+    "Html": "Hi hbeham,\r<br />\n  I have been working on Querymaster  since last month during my limited free time.\r<br />\nthe logic for retrying,master server fixes,few rcon bugs all have already been implemented.\r<br />\nI am currently working on adding logic to query steam(almost finished).\r<br />\nI would be releasing Querymaster 3.0 by first week of June.\r<br />\n<br />\nThanks for your interest and feedback.\r<br />\nI would add link to your  ServerBrowser on my homepage.<br />\n",
+    "PostedDate": "2015-05-25T10:21:31.273-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1427507",
+    "ThreadId": "638720",
+    "Html": "that's great news, thanks!\r<br />\n<br />\nI just found a few more bugs, maybe you already fixed them too:<br />\n<ul>\n<li>Parser.ReadShort() returns a signed short, so port numbers &gt;=32768 will show up as negative numbers.</li>\n<li>Server.Current() does not check if the EDF (extra data flag) is even preset in the data buffer. Games like TheShip don't have that data, which results in an ArrayIndexOutOfBounds when you try to read that byte.</li>\n<li>Server.Obsolte() ... modInfo.IsHalfLifeDll  should check for a value == 0 instead of &lt; 0 (which is always false for a value of type byte)</li>\n</ul>\n",
+    "PostedDate": "2015-05-25T13:45:24.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

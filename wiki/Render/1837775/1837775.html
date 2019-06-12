@@ -1,0 +1,17 @@
+<div class="wikidoc"><h2>Steam</h2>This namespace is an interface to Steam&#39;s web api.<br /><br />This is a c# wrapper for the steam web api found <a href="http://steamcommunity.com/dev">here</a>.<br />Most of the methods require an api key which you can get it <a href="http://steamcommunity.com/dev/apikey">here</a>.<br />With this namespace, users can easily call web api methods without worrying about sockets,parsing etc.<br /><br />Steam Web Api define some interfaces and each interface contain methods.<br />Interfaces are represented by classes and the methods in the interface as methods in the classes.<br /><br />This is still a work in progress.<br />Currently following interfaces have been implemented,
+<ul><li>IPlayerService</li>
+<li>ISteamApps</li>
+<li>ISteamDirectory</li>
+<li>ISteamNews</li>
+<li>ISteamUser</li>
+<li>ISteamUserStats</li>
+<li>ISteamWebAPIUtil</li></ul>
+It also includes an unofficial interface,ISteamGroup that provides information on groups(since official version didn&#39;t have an interface/method to get group information).<br /><br />Methods return an instance of SteamResponse.<br />It has following properties and methods<br />IsSuccess : returns true if parsing was successful.<br />ParsedResponse : the actual parsed response from the method.<br />RequestUrl : The Url used to query the steam api.<br />GetRawResponse(Format format) : returns the raw unparsed response.Supports 3 formats: json,xml and vdf(library internally uses json format).<br /><br />Classes that define different objects of response json string follow this naming convention,<br />Root Object has a name,&lt;MethodName&gt;+Response (eg:-GetNewsForAppResponse)<br />Other object has name &lt;Parent class name&gt;+&lt;class Name&gt; (eg:-GetNewsForAppResponseAppNews)<br /><br />I strongly recommend use of var keyword  instead of actual name.<br /><br />Sample Code:-<br /><pre>
+//Get list of all apps and display it in &lt;appid&gt; : &lt;name&gt; format
+SteamQuery query = new SteamQuery(&quot;&lt;my api key&gt;&quot;);
+var response = query.ISteamApps.GetAppList();
+if(response.IsSuccess)
+  Console.WriteLine(String.Join(&quot;\n&quot;,response.ParsedResponse.Apps.Select(x =&gt; x.AppId + &quot;\t:\t&quot; + x.Name)));
+Console.ReadLine();
+</pre><br />
+<h3>Want to contribute?</h3>You can contribute by implementing the interfaces not yet implemented.<br /><br />Credits will be given for your work <a href="https://querymaster.codeplex.com/wikipage?title=Steam%20Web%20Api%20Contributors">here</a>.<br /><br />All methods in the interface should be implemented.<br /><br />Use ISteamWebApiUtil.GetSupportedAPIList() method to get list of interfaces.<br /><br />Check <a href="https://querymaster.codeplex.com/wikipage?title=Steam%20Web%20Api%20Contributors">here</a> if the interface you selected is already implemented or not.<br /><br />Click <a href="https://querymaster.codeplex.com/wikipage?title=Adding%20new%20interface">here</a> for the steps<br /><br /><br />Read the documentation for details<br /><br /><br /><br /><br /><br /></div><div class="ClearBoth"></div>

@@ -1,0 +1,19 @@
+<div class="wikidoc"><h1>Query Master Server</h1>Create an instance that would represent the Master Server.<br /><br /><pre>
+MasterServer server = MasterQuery.GetMasterServerInstance(EngineType.Source);
+</pre><br />Now You can  query MasterServer using MasterServer instance.<br /><br /><b>Get Server Addresses</b><br /><br /><pre>
+server.GetAddresses(Region.Asia, recv);
+
+static void recv(ReadOnlyCollection&lt;IPEndPoint&gt; endPoints)
+{
+    foreach (IPEndPoint i in endPoints)
+    {
+        //&quot;0.0.0.0:0&quot; is the last address 
+        if (i.Address.ToString() != &quot;0.0.0.0&quot;)
+            Console.WriteLine(i);
+    }
+}
+</pre><br /><br />You can filter the result by using IPFilter Instance<br />eg:-Get CS:Source servers thats running &quot;de_dust2&quot; map in linux environment<br /><br /><pre>
+server.GetAddresses(Region.Asia, recv, new IpFilter() { GameDirectory=&quot;cstrike&quot;,IsLinux=true,Map=&quot;de_dust2&quot; });
+</pre><br /><br />Call dispose method to free the resources used by MasterServer Instance.<br /><br /><pre>
+server.Dispose();
+</pre><br /><br /><br /><br /><br /><br /></div><div class="ClearBoth"></div>
