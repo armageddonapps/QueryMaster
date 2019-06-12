@@ -1,43 +1,0 @@
-<div class="wikidoc"><h2>GameServer</h2>Has methods to query game server,listen to logs remotely and to send commands to server using rcon password.<br />
-<h3>Fixes</h3>Main fixes include:-
-<ul><li>Handling multipacket responses from Gold Source Rcon.</li>
-<li>Log messages got truncated in some cases.this has been fixed.</li>
-<li>Obsolete game server&#39;s GetInfo() response return an empty string for Environment property in some cases.this has been fixed.</li>
-<li>Replaced Environment,ServerType,TheShip property of ServerInfo  with enums.</li>
-<li>Parsing issues of ExtraInfo present in ServerInfo has been fixed.ExtraInfo property would be set in every case. Hence not need to perform null check.</li>
-<li>The Ping method would now return -1 if server is not reachable/responding.(Its wait time = ReceiveTimeout)</li></ul>
-
-<h2>Features</h2><ul><li>Retry functionality has been added. In case of any exception,it would retry to complete the said operation.This applies to GetInfo(),GetRules() and GetPlayers().</li>
-<li>In relation to the new Retry Functionality,Users can pass an AttemptCallback delegate that would be invoked on every attempt made to complete the said operation.This applies to GetInfo(),GetRules() and GetPlayers().</li>
-<li>A new flag has been added(<i>ThrowExceptions</i>).If set to false, it wont throw any exception, instead it would return a null value.This applies to GetInfo(),GetRules() and GetPlayers().</li>
-<li>The ToString() method of any object returned by GameServer, would now return a Json string.</li>
-<li>The SendTimeout and ReceiveTimeout is now public.Now it can b changed at anytime.</li>
-<li>Server Instance now exposes server endpoint.</li></ul>
-
-<h3>Rcon Update</h3>The GetControl method now returns a bool value instead of an rcon instance.If rcon password is valid then it would return true and set the Rcon property else false.<br /><br />sample code :-<br /><br /><pre>
-if (server.GetControl(rconPassword))
-     Console.WriteLine(server.Rcon.SendCommand(&quot;status&quot;));
-else
-     Console.WriteLine(&quot;invalid password&quot;);
-</pre><br />
-<h3>Log Update</h3>The event mechanism is now separated from the main Log Class.<br />The new method GetEventsInstance()  would return an instance of LogEvents that encapsulates the event mechanism.<br />Calling GetEventsInstance method would return a new LogEvents instance.<br /><br />LogEvents supports filtering.<br /><br />There are 3 types of filter,
-<ul><li>Player filter : filter by player.</li>
-<li>String filter : filter by string.</li>
-<li>Regex filter : filter by custom pattern.</li></ul>
-<br />All these filters have an action property.this can b set to &quot;Allow&quot; or &quot;block&quot; to filter in/out the log message.<br />Any number of filters can be added.Filtering is applied in the order they were added.<br />Any filter can be enabled/disabled at any time.<br />Filters affect all events present in that instance.<br /><br />LogEvents also has LogReceived event which is same as listen.<br />Only difference is filtering is applied on it.<br /><br />eg:-<br />If i add a playerfilter with name as &quot;abc&quot;,then
-<ul><li>if Action is set to &quot;Allow&quot; then,
-<ul><li>Player related events like PlayerAcquiredWeapon,PlayerInjured,Say would be invoked only for player &#39;abc&#39;.</li>
-<li>LogReceived event would be invoked on server messages and messages that were created by player &#39;abc&#39;&#39;s action.</li></ul></li>
-<li>if Action is set to &quot;Block&quot; then,
-<ul><li>Player related events like PlayerAcquiredWeapon,PlayerInjured,Say would not be invoked for player &#39;abc&#39;.</li>
-<li>LogReceived event would be invoked on server messages and messages that were not created by player &#39;abc&#39;&#39; action.</li></ul></li></ul>
-sample code :-<br /><br /><pre>
-var event1 = logs.GetEventsInstance();
-event1.Filters.Add(new PlayerFilter { Name = &quot;abc&quot;, Action = LogFilterAction.Allow });
-//Invoked only when abc says something.
-event1.Say += (o, e) =&gt; Console.WriteLine(e.Message);
-var event2 = logs.GetEventsInstance();
-event2.Filters.Add(new PlayerFilter { Name = &quot;xyz&quot;, Action = LogFilterAction.Allow });
-//Invoked only when xyz says something.
-event2.Say += (o, e) =&gt; Console.WriteLine(e.Message);
-</pre><br /><br /><br />Read documentation for more details.<br /><br /><br /><br /><br /><br /></div><div class="ClearBoth"></div>

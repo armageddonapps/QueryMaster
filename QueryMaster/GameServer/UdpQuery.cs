@@ -30,11 +30,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using Ionic.BZip2;
 using System.Net;
-using Ionic.Crc;
 using System.Net.Sockets;
+using ICSharpCode.SharpZipLib.BZip2;
 using QueryMaster;
+using ICSharpCode.SharpZipLib.Checksum;
 
 namespace QueryMaster.GameServer
 {
@@ -224,10 +224,11 @@ namespace QueryMaster.GameServer
         private bool IsValid(byte[] data, int Checksum)
         {
             bool isValid;
-            using (var Input = new MemoryStream(data))
-            {
-                isValid = Checksum == new CRC32().GetCrc32(Input);
-            }
+
+            var crc = new Crc32();
+            crc.Update(data);
+
+            isValid = Checksum == crc.Value;
 
             return isValid;
         }

@@ -1,26 +1,0 @@
-<div class="wikidoc"><h1>ServerInfo Update</h1>Information in Server.Extra can be accessed in following manner<br /><br /><pre>
-Server server = ServerQuery.GetServerInstance(EngineType.Source, &quot;&lt;server ip&gt;&quot;, &lt;Server Port&gt;);
-ServerInfo info=server.GetInfo();
-Console.WriteLine(info.Extra.GameId);//Game id of server
-Console.WriteLine(info.Extra.Keywords);//Tags that describe the game according to the server.
-Console.WriteLine(info.Extra.Port);//The server&#39;s game port number.
-Console.WriteLine(info.Extra.SteamID);//Server&#39;s SteamID. 
-if (info.Extra.SpecInfo != null)
-{
-Console.WriteLine(info.Extra.SpecInfo.Name);//Spectator port number for SourceTV. 
-Console.WriteLine(info.Extra.SpecInfo.Port);//Name of the spectator server for SourceTV. 
-}
-</pre><br />
-<h1>Exception handling</h1>The library queries server using the unreliable UDP protocol and parses the received UDP packets.<br />Exceptions raised during parsing the packets/data would now  include the partially parsed data (byte array) that caused the  exception.<br />Its recommended to include calls to library methods within try catch block to handle<br />-Socket time out exceptions.<br />-bugs(if any) in parsing system.<br /><br />Recommended way:<br /><pre>
-try
-{
-//call to a library method
-}
-//incase of socket exception,recvdata would be null.
-catch (Exception ex)
-{
-byte[] recvData = ex.Data[&quot;ReceivedData&quot;] as byte[];
-if(recvData!=null)
-Console.WriteLine(Encoding.UTF8.GetString(recvData));
-}
-</pre><br /><br /><i>Note:This is added to find bugs easily.</i><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div><div class="ClearBoth"></div>
