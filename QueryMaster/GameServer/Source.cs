@@ -39,14 +39,21 @@ namespace QueryMaster.GameServer
         internal Source(ConnectionInfo conInfo)
             : base(conInfo, EngineType.Source, false) { }
 
-        public override bool GetControl(string pass)
+        public override bool GetControl(string pass, bool useWebRcon)
         {
             ThrowIfDisposed();
             bool isSuccess = false;
-            Rcon = RconSource.Authorize(ConInfo, pass);
+            Rcon = useWebRcon
+                ? RconWeb.Authorize(ConInfo, pass)
+                : RconSource.Authorize(ConInfo, pass);
             if (Rcon != null)
                 isSuccess = true;
             return isSuccess;
+        }
+
+        public override bool GetControl(string pass)
+        {
+            return GetControl(pass, false);
         }
     }
 }

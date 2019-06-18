@@ -38,6 +38,17 @@ namespace QueryMaster.GameServer
     {
         internal GoldSource(ConnectionInfo conInfo, bool? isObsolete)
            : base(conInfo, EngineType.GoldSource, isObsolete) { }
+
+        public override bool GetControl(string pass, bool useWebRcon)
+        {
+            if (useWebRcon)
+            {
+                throw new NotSupportedException("GoldSource not supported WebRcon client");
+            }
+
+            return GetControl(pass);
+        }
+
         public override bool GetControl(string pass)
         {
             ThrowIfDisposed();

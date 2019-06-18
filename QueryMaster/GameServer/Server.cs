@@ -466,6 +466,14 @@ namespace QueryMaster.GameServer
         /// Gets valid rcon instance that can be used to send rcon commands to server..
         /// </summary>
         /// <param name="pass">Rcon password of server.</param>
+        /// <param name="useWebRcon">connect as WebRcon client</param>
+        /// <returns>true if server accepted rcon password.</returns>
+        public abstract bool GetControl(string pass, bool useWebRcon);
+
+        /// <summary>
+        /// Gets valid rcon instance that can be used to send rcon commands to server..
+        /// </summary>
+        /// <param name="pass">Rcon password of server.</param>
         /// <returns>true if server accepted rcon password.</returns>
         public abstract bool GetControl(string pass);
         /// <summary>

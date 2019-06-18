@@ -67,6 +67,7 @@ namespace QueryMaster.GameServer
         /// </summary>
         /// <param name="ip">IP-Address of client.</param>
         /// <param name="port">Port number of client.</param>
+        [Obsolete]
         public abstract void AddlogAddress(string ip, ushort port);
 
         /// <summary>
@@ -74,6 +75,7 @@ namespace QueryMaster.GameServer
         /// </summary>
         /// <param name="ip">IP-Address of client.</param>
         /// <param name="port">Port number of client.</param>
+        [Obsolete]
         public abstract void RemovelogAddress(string ip, ushort port);
 
     }
