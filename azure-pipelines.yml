@@ -12,7 +12,6 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  releaseBranchVersion: ${{  }}
 
 name: $(TeamProject)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
 
