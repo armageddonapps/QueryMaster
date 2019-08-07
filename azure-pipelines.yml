@@ -13,7 +13,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
 
-name: $(TeamProject)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+name: '[$(BuildID)]$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)'
 
 steps:
 
