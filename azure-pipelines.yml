@@ -5,12 +5,16 @@
 
 trigger:
 - master
+- release/*
 
 pool:
   vmImage: 'ubuntu-latest'
 
 variables:
   buildConfiguration: 'Release'
+  releaseBranchVersion: ${{  }}
+
+name: $(TeamProject)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
 
 steps:
 
@@ -20,3 +24,5 @@ steps:
     command: 'restore'
     arguments: '--configuration $(buildConfiguration)'
     projects: 'QueryMaster/QueryMaster.csproj'
+
+- script: echo
