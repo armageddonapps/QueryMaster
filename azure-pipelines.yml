@@ -12,6 +12,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  packageVersion: '$(SourceBranchName).$(BuildID)'
 
 name: '[$(BuildID)]$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)'
 
