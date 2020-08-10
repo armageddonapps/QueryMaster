@@ -63,7 +63,7 @@ namespace QueryMaster
             ushort num=0;
 
             CurrentPosition++;
-            if (CurrentPosition + 3 > LastPosition)
+            if (CurrentPosition + 1 > LastPosition)
                 throw new ParseException("Unable to parse bytes to ushort.");
             
             if (!BitConverter.IsLittleEndian)
