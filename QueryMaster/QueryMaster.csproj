@@ -3,17 +3,17 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Company>armageddon apps</Company>
-    <Copyright>2019 (c)</Copyright>
+    <Copyright>2020 (c)</Copyright>
     <Authors>Sergey Kochkin</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>remaster of https://archive.codeplex.com/?p=querymaster</Description>
     <RepositoryUrl>https://github.com/armageddonapps/QueryMaster.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <Version>1.1.0</Version>
-    <FileVersion>1.1.0.0</FileVersion>
-    <PackageReleaseNotes>Add WebRcon support for Source client</PackageReleaseNotes>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <Version>1.1.2</Version>
+    <FileVersion>1.1.2.0</FileVersion>
+    <PackageReleaseNotes>Fixed reading ushort at the end of A2S_INFO response</PackageReleaseNotes>
+    <AssemblyVersion>1.1.2.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
