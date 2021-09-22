@@ -132,12 +132,14 @@ namespace QueryMaster.GameServer
 
                 recvData = new byte[UdpSocket.BufferSize];
 
+                challenge:
                 Stopwatch sw = Stopwatch.StartNew();
                 recvData = UdpSocket.GetResponse(Query, Type);
                 sw.Stop();
                 Latency = sw.ElapsedMilliseconds;
                 switch (recvData[0])
                 {
+                    case 0x41: Query = Query.Concat(recvData.Skip(1)).ToArray(); goto challenge;
                     case 0x49: serverInfo = Current(recvData); break;
                     case 0x6D: serverInfo = Obsolete(recvData); break;
                     default: throw new InvalidHeaderException("packet header is not valid");
