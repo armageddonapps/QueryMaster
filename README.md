@@ -24,3 +24,6 @@ Counter-Strike ,Team Fortress Classic ,Day of Defeat ,Deathmatch Classic ,Opposi
 ## Source Games
 
 Half-Life 2 ,Counter-Strike: Source ,Half-Life: Source ,Day of Defeat: Source ,Half-Life 2: Deathmatch ,Half-Life 2: Lost Coast ,Half-Life Deathmatch: Source ,Half-Life 2: Episode One ,Portal ,Half-Life 2: Episode Two ,Team Fortress 2 ,Left 4 Dead ,Left 4 Dead 2 ,Dota 2 ,Portal 2 ,Alien Swarm ,Counter-Strike: Global Offensive ,SiN Episodes: Emergence ,Dark Messiah of Might and Magic ,The Ship ,Bloody Good Time ,Vampire The Masquerade - Bloodlines ,Garry's Mod,Zombie Panic! Source ,Age of Chivalry , Synergy ,D.I.P.R.I.P. ,Eternal Silence ,Pirates , Vikings , & Knights II ,Dystopia ,Insurgency ,Nuclear Dawn ,Smashball,Counterstrike Global Offensive and many more.........
+
+## Usage
+Tutorial can be found [here](https://codeplexarchive.org/projecttab/wiki/querymaster/Tutorial/)
